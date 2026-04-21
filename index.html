@@ -256,7 +256,27 @@
 
   <div id="resultText"></div>
 
-  <script>
+  <script type="module">
+// 1. Import Firebase Cloud Tools
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
+    // 2. Your Exact Firebase Keys
+    const firebaseConfig = {
+      apiKey: "AIzaSyDQoZjy_FrmpcqLIzpfzvD-XU6WRGXwmK8",
+      authDomain: "sme-digitalizer.firebaseapp.com",
+      projectId: "sme-digitalizer",
+      storageBucket: "sme-digitalizer.firebasestorage.app",
+      messagingSenderId: "728359250892",
+      appId: "1:728359250892:web:5c619c09228d0212120b69"
+    };
+
+    // 3. Connect to the Database
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // --- FRONTEND LOGIC ---
+  
     // Dark Mode Toggle Logic
     document.getElementById("themeToggle").addEventListener("click", function() {
       // This switches the CSS class on and off
@@ -315,6 +335,24 @@
       
       document.getElementById("resultText").innerHTML = "<h3>Your Digital Maturity Score: " + totalScore + " / 10</h3><p>" + roadmap + "</p>";
       document.getElementById("resultText").style.display = "block";
+
+      // 4. Send Data to Firebase
+      try {
+        const docRef = await addDoc(collection(db, "assessments"), {
+          industry: industry.value,
+          score: totalScore,
+          stage: stageName,
+          timestamp: serverTimestamp()
+        });
+        
+        // Show actual results plus a success message
+        document.getElementById("resultText").innerHTML = "<h3>Your Digital Maturity Score: " + totalScore + " / 10</h3><p>" + roadmap + "</p><p style='font-size: 0.85em; color: #10b981; margin-top: 20px;'>✅ Result saved securely to cloud database.</p>";
+        
+      } catch (e) {
+        console.error("Error adding document: ", e);
+        // If internet cuts out, still show the user their score
+        document.getElementById("resultText").innerHTML = "<h3>Your Digital Maturity Score: " + totalScore + " / 10</h3><p>" + roadmap + "</p>";
+      }
     });
   </script>
 
