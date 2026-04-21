@@ -14,6 +14,7 @@
       margin: 40px auto;
       padding: 20px;
       line-height: 1.6;
+      transition: background-color 0.3s, color 0.3s;
     }
 
     h1 {
@@ -23,7 +24,6 @@
       margin-bottom: 20px;
     }
 
-    /* Progress Bar */
     .progress-wrapper {
       width: 100%;
       background-color: #e2e8f0;
@@ -36,11 +36,10 @@
     .progress-fill {
       height: 100%;
       background-color: #2563eb;
-      width: 16.6%; /* Starts at ~16% for Q1 */
+      width: 16.6%;
       transition: width 0.4s ease;
     }
 
-    /* Step Containers */
     .step {
       display: none; 
       animation: fadeIn 0.5s;
@@ -61,6 +60,7 @@
       border-radius: 16px;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       border: 1px solid #e2e8f0;
+      transition: all 0.3s;
     }
 
     .quiz-question h2 {
@@ -127,43 +127,16 @@
       color: #059669;
       margin-top: 0;
     }
-    body.dark-theme {
-      background-color: #0f172a;
-      color: #f8fafc;
-    }
 
-    body.dark-theme h1 {
-      color: #f8fafc;
-    }
-
-    body.dark-theme .quiz-question, 
-    body.dark-theme #resultText {
-      background: #1e293b;
-      border-color: #334155;
-      color: #f8fafc;
-    }
-
-    body.dark-theme .quiz-question h2,
-    body.dark-theme #resultText h3 {
-      color: #f8fafc;
-    }
-
-    body.dark-theme label {
-      background: #334155;
-      border-color: #475569;
-      color: #e2e8f0;
-    }
-
-    body.dark-theme label:hover {
-      border-color: #3b82f6;
-      background: #1e3a8a;
-    }
-
-    body.dark-theme .progress-wrapper {
-      background-color: #334155;
-    }
-
-    /* The Theme Toggle Button Styling */
+    /* --- DARK THEME OVERRIDES --- */
+    body.dark-theme { background-color: #0f172a; color: #f8fafc; }
+    body.dark-theme h1 { color: #f8fafc; }
+    body.dark-theme .quiz-question, body.dark-theme #resultText { background: #1e293b; border-color: #334155; color: #f8fafc; }
+    body.dark-theme .quiz-question h2, body.dark-theme #resultText h3 { color: #f8fafc; }
+    body.dark-theme label { background: #334155; border-color: #475569; color: #e2e8f0; }
+    body.dark-theme label:hover { border-color: #3b82f6; background: #1e3a8a; }
+    body.dark-theme .progress-wrapper { background-color: #334155; }
+    
     #themeToggle {
       position: absolute;
       top: 20px;
@@ -177,17 +150,13 @@
       font-weight: bold;
       transition: all 0.3s;
     }
-
-    body.dark-theme #themeToggle {
-      background: #334155;
-      color: #f8fafc;
-    }
+    body.dark-theme #themeToggle { background: #334155; color: #f8fafc; }
   </style>
 </head>
 
 <body>
-    <button id="themeToggle">🌙 Dark Mode</button>
 
+  <button id="themeToggle">🌙 Dark Mode</button>
   <h1>SME Digital Maturity Quiz</h1>
 
   <div class="progress-wrapper">
@@ -197,49 +166,49 @@
   <div class="step active" id="step1">
     <div class="quiz-question">
       <h2>1. What type of business do you run?</h2>
-      <label><input type="radio" name="industry" value="Food & Beverage"> Food & Beverage (Cafe, Restaurant, Food Truck)</label>
-      <label><input type="radio" name="industry" value="Retail"> Retail Store (Clothing, Electronics, Groceries)</label>
-      <label><input type="radio" name="industry" value="Services"> Services (Salon, Repair, Consulting, Clinic)</label>
+      <label><input type="radio" name="industry" value="Food & Beverage"> Food & Beverage (Cafe, Restaurant)</label>
+      <label><input type="radio" name="industry" value="Retail"> Retail Store (Clothing, Electronics)</label>
+      <label><input type="radio" name="industry" value="Services"> Services (Salon, Repair, Clinic)</label>
       <button class="next-btn" onclick="goToStep(2)">Next</button>
     </div>
   </div>
 
   <div class="step" id="step2">
     <div class="quiz-question">
-      <h2>2. How do you currently find new customers and promote your business?</h2>
-      <label><input type="radio" name="marketing" value="0"> Word of mouth, physical flyers, or walk-ins only.</label>
-      <label><input type="radio" name="marketing" value="1"> Manually posting on social media or WhatsApp.</label>
-      <label><input type="radio" name="marketing" value="2"> Running paid ads or using automated marketing tools.</label>
+      <h2>2. How do you find new customers?</h2>
+      <label><input type="radio" name="marketing" value="0"> Word of mouth or physical flyers.</label>
+      <label><input type="radio" name="marketing" value="1"> Manually posting on social media.</label>
+      <label><input type="radio" name="marketing" value="2"> Running paid ads or automated tools.</label>
       <button class="next-btn" onclick="goToStep(3)">Next</button>
     </div>
   </div>
 
   <div class="step" id="step3">
     <div class="quiz-question">
-      <h2>3. How do you track your inventory and daily sales?</h2>
-      <label><input type="radio" name="inventory" value="0"> Pen and paper, manual counting, or a calculator.</label>
-      <label><input type="radio" name="inventory" value="1"> Typing it into Excel spreadsheets or Google Sheets.</label>
-      <label><input type="radio" name="inventory" value="2"> Cloud-based POS systems (like Foodics) or ERP software.</label>
+      <h2>3. How do you track inventory and sales?</h2>
+      <label><input type="radio" name="inventory" value="0"> Pen and paper or a calculator.</label>
+      <label><input type="radio" name="inventory" value="1"> Excel spreadsheets or Google Sheets.</label>
+      <label><input type="radio" name="inventory" value="2"> Cloud POS (like Foodics) or ERP.</label>
       <button class="next-btn" onclick="goToStep(4)">Next</button>
     </div>
   </div>
 
   <div class="step" id="step4">
     <div class="quiz-question">
-      <h2>4. How do your customers usually pay you?</h2>
+      <h2>4. How do your customers usually pay?</h2>
       <label><input type="radio" name="payments" value="0"> Cash only. No card machines.</label>
-      <label><input type="radio" name="payments" value="1"> Physical Mada/Credit card machines, or STC Pay transfers.</label>
-      <label><input type="radio" name="payments" value="2"> Online payment links, Apple Pay, or Buy-Now-Pay-Later.</label>
+      <label><input type="radio" name="payments" value="1"> Physical Mada machines or STC Pay.</label>
+      <label><input type="radio" name="payments" value="2"> Apple Pay, Online Links, or Tabby/Tamara.</label>
       <button class="next-btn" onclick="goToStep(5)">Next</button>
     </div>
   </div>
 
   <div class="step" id="step5">
     <div class="quiz-question">
-      <h2>5. What does your online presence look like?</h2>
-      <label><input type="radio" name="online" value="0"> None. I don't have a website or Google Maps listing.</label>
-      <label><input type="radio" name="online" value="1"> I have a Google Maps profile and maybe an Instagram page.</label>
-      <label><input type="radio" name="online" value="2"> I have a full e-commerce website or online booking system.</label>
+      <h2>5. What is your online presence?</h2>
+      <label><input type="radio" name="online" value="0"> None. No website or Maps listing.</label>
+      <label><input type="radio" name="online" value="1"> A Google Maps profile and Instagram.</label>
+      <label><input type="radio" name="online" value="2"> Full e-commerce site or booking system.</label>
       <button class="next-btn" onclick="goToStep(6)">Next</button>
     </div>
   </div>
@@ -247,9 +216,9 @@
   <div class="step" id="step6">
     <div class="quiz-question">
       <h2>6. How do you keep customers coming back?</h2>
-      <label><input type="radio" name="retention" value="0"> I don't have a specific system. I hope they return.</label>
-      <label><input type="radio" name="retention" value="1"> I collect numbers and send manual WhatsApp broadcasts.</label>
-      <label><input type="radio" name="retention" value="2"> I use an automated loyalty points program.</label>
+      <label><input type="radio" name="retention" value="0"> No specific system.</label>
+      <label><input type="radio" name="retention" value="1"> Manual WhatsApp broadcasts.</label>
+      <label><input type="radio" name="retention" value="2"> Automated loyalty points program.</label>
       <button id="submitBtn">Get My Digital Roadmap</button>
     </div>
   </div>
@@ -257,7 +226,7 @@
   <div id="resultText"></div>
 
   <script type="module">
-// 1. Import Firebase Cloud Tools
+    // 1. Import Firebase Cloud Tools
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-app.js";
     import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
 
@@ -276,35 +245,23 @@
     const db = getFirestore(app);
 
     // --- FRONTEND LOGIC ---
-  
-    // Dark Mode Toggle Logic
+    
+    // Theme Toggle
     document.getElementById("themeToggle").addEventListener("click", function() {
-      // This switches the CSS class on and off
       document.body.classList.toggle("dark-theme");
-      
-      // This changes the text and emoji on the button
-      if (document.body.classList.contains("dark-theme")) {
-        this.innerText = "☀️ Light Mode";
-      } else {
-        this.innerText = "🌙 Dark Mode";
-      }
+      this.innerText = document.body.classList.contains("dark-theme") ? "☀️ Light Mode" : "🌙 Dark Mode";
     });
-    // Navigation Logic
-    function goToStep(stepNumber) {
-      document.querySelectorAll('.step').forEach(function(step) {
-        step.classList.remove('active');
-      });
+
+    // Navigation
+    window.goToStep = function(stepNumber) {
+      document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
       document.getElementById('step' + stepNumber).classList.add('active');
-      // Update Progress Bar (each step is ~16.6%)
       document.getElementById('progressBar').style.width = (stepNumber * 16.6) + '%';
     }
 
-    // Scoring Logic
-    document.getElementById("submitBtn").addEventListener("click", function() {
-      // Grab the industry answer (Text value, not scored)
+    // Scoring & Saving to Cloud
+    document.getElementById("submitBtn").addEventListener("click", async function() {
       let industry = document.querySelector('input[name="industry"]:checked');
-      
-      // Grab the scored answers (Number values)
       let q1 = document.querySelector('input[name="marketing"]:checked');
       let q2 = document.querySelector('input[name="inventory"]:checked');
       let q3 = document.querySelector('input[name="payments"]:checked');
@@ -316,24 +273,25 @@
         return;
       }
 
-      // Max score is 10 (Notice 'industry' is NOT in this math)
       let totalScore = parseInt(q1.value) + parseInt(q2.value) + parseInt(q3.value) + parseInt(q4.value) + parseInt(q5.value);
       let roadmap = "";
+      let stageName = "";
       
       if (totalScore <= 3) {
-        roadmap = "<strong>Stage 1: Traditional.</strong> Your roadmap starts with the basics. <br><br>• Step 1: Claim your free Google Business Profile. <br>• Step 2: Get a physical Mada machine. <br>• Step 3: Transition from paper receipts to a free app like Square.";
-      } 
-      else if (totalScore <= 7) {
-        roadmap = "<strong>Stage 2: Basic Digital.</strong> You have a good foundation! <br><br>• Step 1: Upgrade to a cloud POS like Foodics. <br>• Step 2: Set up automated WhatsApp Business replies. <br>• Step 3: Launch a basic Linktree or Salla store to take online orders.";
-      } 
-      else {
-        roadmap = "<strong>Stage 3: Advanced.</strong> You are highly digital! <br><br>• Step 1: Integrate a loyalty program (like Waffarha) to retain customers. <br>• Step 2: Offer Buy-Now-Pay-Later (Tabby/Tamara). <br>• Step 3: Automate your inventory reordering with ERP software.";
+        stageName = "Stage 1: Traditional";
+        roadmap = "<strong>" + stageName + "</strong><br><br>• Step 1: Claim your free Google Business Profile. <br>• Step 2: Get a physical Mada machine. <br>• Step 3: Use a free app like Square for receipts.";
+      } else if (totalScore <= 7) {
+        stageName = "Stage 2: Basic Digital";
+        roadmap = "<strong>" + stageName + "</strong><br><br>• Step 1: Upgrade to a cloud POS like Foodics. <br>• Step 2: Set up automated WhatsApp Business replies. <br>• Step 3: Launch a Salla store for online orders.";
+      } else {
+        stageName = "Stage 3: Advanced";
+        roadmap = "<strong>" + stageName + "</strong><br><br>• Step 1: Integrate a loyalty program (like Waffarha). <br>• Step 2: Offer Tabby/Tamara. <br>• Step 3: Automate inventory with ERP software.";
       }
 
+      // Hide quiz and show loading state
       document.getElementById("step6").style.display = "none"; 
       document.querySelector(".progress-wrapper").style.display = "none"; 
-      
-      document.getElementById("resultText").innerHTML = "<h3>Your Digital Maturity Score: " + totalScore + " / 10</h3><p>" + roadmap + "</p>";
+      document.getElementById("resultText").innerHTML = "<h3>⏳ Saving results to database...</h3>";
       document.getElementById("resultText").style.display = "block";
 
       // 4. Send Data to Firebase
@@ -355,6 +313,5 @@
       }
     });
   </script>
-
 </body>
 </html>
