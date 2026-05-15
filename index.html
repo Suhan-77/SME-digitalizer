@@ -16,6 +16,21 @@
       line-height: 1.6;
       transition: background-color 0.3s, color 0.3s;
     }
+    body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('logo.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 500px; 
+  opacity: 0.06; /* Drops the visibility to 6% for a faint shadow effect */
+  z-index: -1; /* Forces it behind all your quiz boxes */
+  pointer-events: none; /* Ensures the logo doesn't block users from clicking buttons */
+}
 
     h1 {
       text-align: center;
