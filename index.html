@@ -59,7 +59,7 @@
       background: #ffffff;
       padding: 30px;
       border-radius: 16px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
       border: 1px solid #e2e8f0;
       transition: all 0.3s;
     }
@@ -256,6 +256,19 @@
 
     // Navigation
     window.goToStep = function(stepNumber) {
+      // 1. Find the currently active question on the screen
+      const currentStep = document.querySelector('.step.active'); 
+      
+      // 2. Look inside that question to see if a radio button is checked
+      const isAnswered = currentStep.querySelector('input[type="radio"]:checked');
+
+      // 3. If nothing is checked, stop them and show a warning!
+      if (!isAnswered) {
+        alert("Please select an option to continue!");
+        return; // This completely stops the function from moving to the next step
+      }
+
+      // 4. If they DID answer, let them move to the next step
       document.querySelectorAll('.step').forEach(step => step.classList.remove('active'));
       document.getElementById('step' + stepNumber).classList.add('active');
       document.getElementById('progressBar').style.width = (stepNumber * 16.6) + '%';
