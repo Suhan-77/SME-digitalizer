@@ -16,22 +16,7 @@
       line-height: 1.6;
       transition: background-color 0.3s, color 0.3s;
     }
-    body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('logo.jpeg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 500px; 
-  opacity: 0.08; /* Bumped up slightly so it's visible */
-  mix-blend-mode: multiply; /* MAGIC TRICK: Makes the white background completely invisible! */
-  z-index: -1; 
-  pointer-events: none; 
-}
+    
 
     h1 {
       text-align: center;
@@ -167,11 +152,7 @@
       transition: all 0.3s;
     }
     body.dark-theme #themeToggle { background: #334155; color: #f8fafc; }
-    body.dark-theme::before {
-  filter: invert(1) grayscale(1); 
-  mix-blend-mode: screen; 
-  opacity: 0.05;
-}
+    
   </style>
 </head>
 
@@ -334,5 +315,8 @@
       }
     });
   </script>
+  <div style="text-align: center; margin-top: 40px; padding-bottom: 30px;">
+  <img src="logo.jpeg" alt="SME Digitizer Logo" style="max-width: 150px; height: auto; mix-blend-mode: multiply; opacity: 0.8;">
+</div>
 </body>
 </html>
